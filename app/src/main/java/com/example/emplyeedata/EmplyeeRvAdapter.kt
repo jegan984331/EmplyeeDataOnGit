@@ -9,17 +9,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class EmplyeeRvAdapter(val context:Context,
-                       val emplyeeclickinterface:Emplyeeclickinterface,
-                       val emplyeeclickDeleteinterface: EmplyeeclickDeleteinterface)
-    :RecyclerView.Adapter<EmplyeeRvAdapter.ViewHolder>(){
+class EmplyeeRvAdapter(
+    val context: Context,
+    val emplyeeclickinterface: Emplyeeclickinterface,
+    val emplyeeclickDeleteinterface: EmplyeeclickDeleteinterface
+) : RecyclerView.Adapter<EmplyeeRvAdapter.ViewHolder>() {
 
     val allEmplyee = ArrayList<Emplyee>()
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.emplyee_rv_item,parent,false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.emplyee_rv_item, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -41,23 +42,26 @@ class EmplyeeRvAdapter(val context:Context,
         return allEmplyee.size
     }
 
-    inner class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
-        val emname =itemView.findViewById<TextView>(R.id.ename)
-        val emage =itemView.findViewById<TextView>(R.id.eage)
-        val emcode =itemView.findViewById<TextView>(R.id.ecode)
-        val emdesigtion =itemView.findViewById<TextView>(R.id.edesigination)
-        val delete =itemView.findViewById<ImageButton>(R.id.deleteicon)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val emname = itemView.findViewById<TextView>(R.id.ename)
+        val emage = itemView.findViewById<TextView>(R.id.eage)
+        val emcode = itemView.findViewById<TextView>(R.id.ecode)
+        val emdesigtion = itemView.findViewById<TextView>(R.id.edesigination)
+        val delete = itemView.findViewById<ImageButton>(R.id.deleteicon)
     }
-   fun updateEmplyee(newlist:List<Emplyee>){
-      allEmplyee.clear()
-       allEmplyee.addAll(newlist)
-      notifyDataSetChanged()
-  }
+
+    fun updateEmplyee(newlist: List<Emplyee>) {
+        allEmplyee.clear()
+        allEmplyee.addAll(newlist)
+        notifyDataSetChanged()
+    }
 
 }
-   interface EmplyeeclickDeleteinterface{
-           fun onDeleteiconclick(emplyee: Emplyee)
+
+interface EmplyeeclickDeleteinterface {
+    fun onDeleteiconclick(emplyee: Emplyee)
 }
-    interface Emplyeeclickinterface{
-      fun onemplyeeclick(emplyee: Emplyee)
+
+interface Emplyeeclickinterface {
+    fun onemplyeeclick(emplyee: Emplyee)
 }

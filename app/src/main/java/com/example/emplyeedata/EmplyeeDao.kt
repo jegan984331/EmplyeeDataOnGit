@@ -9,18 +9,17 @@ import androidx.room.*
 interface EmplyeeDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(emplyee :Emplyee)
+    suspend fun insert(emplyee: Emplyee)
 
     @Delete
-    suspend fun delete(emplyee :Emplyee)
+    suspend fun delete(emplyee: Emplyee)
 
     @Update
-    suspend fun update(emplyee :Emplyee)
+    suspend fun update(emplyee: Emplyee)
 
 
     @Query("Select * from emplyeeTable order by id ASC")
     fun getAllEmplyee(): LiveData<List<Emplyee>>
-
 
 
 }

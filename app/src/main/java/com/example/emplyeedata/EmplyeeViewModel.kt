@@ -7,22 +7,25 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EmplyeeViewModel(application: Application): AndroidViewModel(application) {
-    val allEmplyees:LiveData<List<Emplyee>>
-    val repository:EmplyeeRepository
+class EmplyeeViewModel(application: Application) : AndroidViewModel(application) {
+    val allEmplyees: LiveData<List<Emplyee>>
+    val repository: EmplyeeRepository
 
     init {
-           val dao = EmplyeeDatabase.getDatabase(application).getEmplyeeDao()
-            repository=EmplyeeRepository(dao)
-            allEmplyees= repository.allEmplyee
+        val dao = EmplyeeDatabase.getDatabase(application).getEmplyeeDao()
+        repository = EmplyeeRepository(dao)
+        allEmplyees = repository.allEmplyee
     }
-    fun deleteEmplyee(emplyee: Emplyee) =viewModelScope.launch(Dispatchers.IO) {
+
+    fun deleteEmplyee(emplyee: Emplyee) = viewModelScope.launch(Dispatchers.IO) {
         repository.delete(emplyee)
     }
-    fun updateEmplyee(emplyee: Emplyee) =viewModelScope.launch(Dispatchers.IO) {
+
+    fun updateEmplyee(emplyee: Emplyee) = viewModelScope.launch(Dispatchers.IO) {
         repository.update(emplyee)
     }
-    fun addEmplyee(emplyee: Emplyee) =viewModelScope.launch(Dispatchers.IO) {
+
+    fun addEmplyee(emplyee: Emplyee) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(emplyee)
     }
 }

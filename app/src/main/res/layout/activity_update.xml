@@ -4,41 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".updateActivity">
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/Etname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Enetername"/>
+        android:hint="Enetername" />
+
     <EditText
-        android:inputType="number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/Etage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Eneterage"/>
+        android:hint="Eneterage"
+        android:inputType="number" />
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/Etcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Enetercode"/>
+        android:hint="Enetercode" />
+
     <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/Etdesignation"
-        android:layout_marginTop="10dp"
-        />
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="done"
+        android:layout_marginTop="10dp" />
+
+    <Button
         android:id="@+id/btnclick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        />
+        android:text="done" />
 
 
 </LinearLayout>

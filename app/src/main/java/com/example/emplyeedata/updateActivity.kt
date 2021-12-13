@@ -23,16 +23,21 @@ class updateActivity : AppCompatActivity() {
         Editage = findViewById(R.id.Etage)
         Editcode = findViewById(R.id.Etcode)
         Editdesignation = findViewById(R.id.Etdesignation)
-        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(EmplyeeViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+        ).get(EmplyeeViewModel::class.java)
 
 
-       //spinner setup
-        val Designation = arrayOf("Android Developer","Web Developer","IOS Developer")
-        val arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,Designation)
-        Editdesignation.adapter= arrayAdapter
-        Editdesignation.onItemSelectedListener =object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>,
-                                        view: View, position: Int, id: Long) {
+        //spinner setup
+        val Designation = arrayOf("Android Developer", "Web Developer", "IOS Developer")
+        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, Designation)
+        Editdesignation.adapter = arrayAdapter
+        Editdesignation.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View, position: Int, id: Long
+            ) {
 
             }
 
@@ -42,12 +47,7 @@ class updateActivity : AppCompatActivity() {
         }
 
 
-
-
-
-
-
-         //Get the intent Value
+        //Get the intent Value
         val emplyeeType = intent.getStringExtra("emplyeeType")
         if (emplyeeType.equals("Edit")) {
             val EmplyeeName = intent.getStringExtra("emplyeename")
@@ -59,7 +59,7 @@ class updateActivity : AppCompatActivity() {
             Editname.setText(EmplyeeName)
             Editage.setText(EmplyeeAge)
             Editcode.setText(EmplyeeCode)
-             //Editdesignation.
+            //Editdesignation.
         } else {
             EditButton.setText("Save Data")
         }
@@ -79,23 +79,26 @@ class updateActivity : AppCompatActivity() {
                         emplyeename,
                         emplyeeage,
                         emplyeecode,
-                        emplyeedesignation))
+                        emplyeedesignation
+                    )
+                )
                 Toast.makeText(this, "$emplyeename Added", Toast.LENGTH_LONG).show()
                 startActivity(Intent(applicationContext, MainActivity::class.java))
-            }else{
-            if (emplyeeType.equals("Edit")) {
-                if (emplyeename.isNotEmpty() && emplyeeage != null && emplyeecode.isNotEmpty() && emplyeedesignation.isNotEmpty()) {
-                    val updatedEmplyee = Emplyee(emplyeename, emplyeeage, emplyeecode, emplyeedesignation)
-                    updatedEmplyee.id = EmolyeeID
-                    viewModel.updateEmplyee(updatedEmplyee)
-                    Toast.makeText(this, "Note Updated..", Toast.LENGTH_LONG).show()
-                }
+            } else {
+                if (emplyeeType.equals("Edit")) {
+                    if (emplyeename.isNotEmpty() && emplyeeage != null && emplyeecode.isNotEmpty() && emplyeedesignation.isNotEmpty()) {
+                        val updatedEmplyee =
+                            Emplyee(emplyeename, emplyeeage, emplyeecode, emplyeedesignation)
+                        updatedEmplyee.id = EmolyeeID
+                        viewModel.updateEmplyee(updatedEmplyee)
+                        Toast.makeText(this, "Note Updated..", Toast.LENGTH_LONG).show()
+                    }
 
                 }
                 startActivity(Intent(applicationContext, MainActivity::class.java))
                 this.finish()
-                }
-            }
-
             }
         }
+
+    }
+}
